@@ -95,4 +95,10 @@ The integration tests use real Postgres and cover concurrent wallet creation, re
 
 ## Deployment
 
-The deployed API is at `https://<app>.onrender.com`. It runs on Render's free tier, uses a Supabase free Postgres database, and ships structured logs to BetterStack Logtail when `LOGTAIL_SOURCE_TOKEN` is set.
+Live at [https://wallet-transfer-ht6p.onrender.com](https://wallet-transfer-ht6p.onrender.com). It runs on Render's free tier, uses a Supabase free Postgres database, and ships structured logs to BetterStack Logtail. Prometheus metrics are at [/metrics](https://wallet-transfer-ht6p.onrender.com/metrics).
+
+Run the probes against it:
+
+```sh
+BASE_URL=https://wallet-transfer-ht6p.onrender.com python3 scripts/burst.py
+```

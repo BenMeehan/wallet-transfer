@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	defaultIngestURL = "https://in.logs.betterstack.com"
+	defaultIngestURL = "https://s2755158.us-west-2a.betterstackdata.com"
 	chanCap          = 10000
 	flushInterval    = 2 * time.Second
 	batchSize        = 50

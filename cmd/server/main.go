@@ -27,9 +27,17 @@ func main() {
 		port = "8080"
 	}
 
-	st, err := store.New(ctx, dsn)
-	if err != nil {
-		panic("connect store: " + err.Error())
+	var st *store.Store
+	var err error
+	for attempt := 1; ; attempt++ {
+		st, err = store.New(ctx, dsn)
+		if err == nil {
+			break
+		}
+		if attempt >= 12 {
+			panic("connect store: " + err.Error())
+		}
+		time.Sleep(5 * time.Second)
 	}
 	defer st.Close()
 
